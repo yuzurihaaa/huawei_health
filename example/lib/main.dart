@@ -17,7 +17,7 @@ class _MyAppState extends State<MyApp> {
     Object platformVersion;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      platformVersion = await HuaweiHealth.platformVersion;
+      platformVersion = await HuaweiHealth.authorizeHuawei;
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
@@ -38,9 +38,21 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: FlatButton(
-            onPressed: initPlatformState,
-            child: Text('Click me'),
+          child: Column(
+            children: <Widget>[
+              FlatButton(
+                onPressed: HuaweiHealth.isHuaweiHealthAppInstalled,
+                child: Text('Check installed'),
+              ),
+              FlatButton(
+                onPressed: initPlatformState,
+                child: Text('Click me'),
+              ),
+              FlatButton(
+                onPressed: HuaweiHealth.getSteps,
+                child: Text('Get Steps'),
+              ),
+            ],
           ),
         ),
       ),

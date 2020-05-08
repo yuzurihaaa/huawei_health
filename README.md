@@ -2,13 +2,34 @@
 
 A new Flutter project.
 
+## Prerequisite
+
+1. Register yourself or your company at https://developer.huawei.com/.
+2. Register your app at Console > Smart Living > HiHealth Kit
+
 ## Getting Started
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+**Running example**
+1. Create a copy of `example.properties` from [example.properties.bak](example/android/example.properties.bak)
+2. Replace your id and huawei id in [example.properties](example/android/example.properties)
+3. Run the project.
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+**Using in your own project**
+1. Add this into your `AndroidManifest.xml`
+```xml
+<meta-data
+            android:name="com.huawei.hms.client.appid"
+            android:value="${huaweiID}"/>
+```
+2. Add to `pubspec.yaml`
+
+> // TODO: Adding to pubspec.yaml example.
+
+3. Import
+```dart
+import 'package:huawei_health/huawei_health.dart';
+```
+
+## Usage.
+
+// TODO: Add Example.

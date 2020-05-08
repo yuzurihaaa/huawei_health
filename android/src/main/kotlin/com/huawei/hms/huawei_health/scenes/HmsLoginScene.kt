@@ -1,55 +1,60 @@
 package com.huawei.hms.huawei_health.scenes
 
 import android.app.Activity
-import android.app.Application
-import android.content.Context
-import android.content.Intent
 import android.util.Log
-import com.huawei.hms.hihealth.data.Scopes
-import com.huawei.hms.support.api.entity.auth.Scope
-import com.huawei.hms.support.hwid.HuaweiIdAuthAPIManager
-import com.huawei.hms.support.hwid.HuaweiIdAuthManager
-import com.huawei.hms.support.hwid.request.HuaweiIdAuthParamsHelper
-import com.huawei.hms.support.hwid.result.AuthHuaweiId
+import com.huawei.hihealthkit.HiHealthDataQuery
+import com.huawei.hihealthkit.HiHealthDataQueryOption
+import com.huawei.hihealthkit.auth.HiHealthAuth
+import com.huawei.hihealthkit.auth.HiHealthOpenPermissionType
+import com.huawei.hihealthkit.data.HiHealthPointData
+import com.huawei.hihealthkit.data.store.HiHealthDataStore
+import com.huawei.hihealthkit.data.type.HiHealthPointType
 import io.flutter.plugin.common.MethodChannel
-import io.flutter.plugin.common.PluginRegistry
-import java.util.*
+
 
 private const val TAG = "HmsLoginScene"
-const val REQUEST_CODE = 8888
 
-class HmsLoginScene(private val activity: Activity, result: MethodChannel.Result) : PluginRegistry.ActivityResultListener {
+class HmsLoginScene(private val activity: Activity, result: MethodChannel.Result) {
 
     fun hmsLogin() {
-        Log.i(TAG, "on onLoginClick click")
-        val scopeList: MutableList<Scope?> = ArrayList()
-        val allRequiredScopes = arrayOfNulls<Scope>(Scopes.getMaxScopes().size)
-        for (index in allRequiredScopes.indices) {
-            allRequiredScopes[index] = Scope(Scopes.getMaxScopes()[index])
-        }
-        Collections.addAll(scopeList, *allRequiredScopes)
-        scopeList.add(HuaweiIdAuthAPIManager.HUAWEIID_BASE_SCOPE)
-        Log.i(TAG, "onRequestPermissionClick allRequiredScopes:" + allRequiredScopes.contentToString())
-        val authParamsHelper = HuaweiIdAuthParamsHelper()
-        val authParams = authParamsHelper.setAccessToken().setScopeList(scopeList).createParams()
-        val authService = HuaweiIdAuthManager.getService(activity, authParams)
-        val authHuaweiIdTask = authService.silentSignIn()
-        authHuaweiIdTask.addOnSuccessListener { huaweiId: AuthHuaweiId? ->
-            if (huaweiId == null) {
-                Log.i(TAG, "huaweiId is null")
-                return@addOnSuccessListener
-            }
-            Log.i(TAG, "silentSignIn success")
-        }.addOnFailureListener { e: Exception? ->
-            val signInIntent = authService.signInIntent
+        val read = intArrayOf(
+                HiHealthOpenPermissionType.HEALTH_OPEN_PERMISSION_TYPE_READ_DATA_POINT_STEP_SUM,
+                HiHealthOpenPermissionType.HEALTH_OPEN_PERMISSION_TYPE_READ_DATA_POINT_DISTANCE_SUM)
+        val write = intArrayOf()
 
-            activity.startActivityForResult(signInIntent, REQUEST_CODE, null)
+        HiHealthAuth.requestAuthorization(activity, write, read) { p0, p1 ->
+            Log.i(TAG, "requestAuthorization onResult: $p0")
+            Log.i(TAG, "requestAuthorization onResult: $p1")
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?): Boolean {
-        Log.i(TAG, "requestCode $requestCode")
-        Log.i(TAG, "resultCode $resultCode")
-        return true;
+    @Suppress("UNCHECKED_CAST")
+    fun query() {
+        val timeout = 0
+        val endTime = System.currentTimeMillis()
+        val startTime = endTime - 1000L * 60 * 60 * 24 * 30 // Check Data of the latest 5 days
+
+// Get HiHealthPointType, like steps, distance, calories, exercise intensity per day.
+// Statistic data returned as an ArrayList where each element represents the value of one day
+// Get HiHealthPointType, like steps, distance, calories, exercise intensity per day.
+// Statistic data returned as an ArrayList where each element represents the value of one day
+        val hiHealthDataQuery = HiHealthDataQuery(HiHealthPointType.DATA_POINT_STEP_SUM, startTime,
+                endTime, HiHealthDataQueryOption())
+        HiHealthDataStore.execQuery(activity, hiHealthDataQuery, timeout) { resultCode, data ->
+            Log.i(TAG, "enter query onSuccess")
+            if (data != null && data is ArrayList<*>) {
+                val dataList: List<HiHealthPointData> = data as List<HiHealthPointData>
+                val stringBuffer = StringBuffer("")
+                for (obj in dataList) {
+                    stringBuffer.append(obj.type.toString())
+                            .append(":")
+                    stringBuffer.append(obj.value.toString())
+                            .append(";")
+                }
+                Log.i(TAG, "resultCode is $resultCode data: $stringBuffer")
+            } else {
+                Log.i(TAG, "User has no data these days or cancel authorization.")
+            }
+        }
     }
 }

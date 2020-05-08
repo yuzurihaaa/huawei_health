@@ -37,6 +37,11 @@ class HuaweiHealthPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 val hmsLoginScene = HmsLoginScene(activity, result)
                 hmsLoginScene.hmsLogin()
             }
+            "getSteps" -> {
+
+                val hmsLoginScene = HmsLoginScene(activity, result)
+                hmsLoginScene.query()
+            }
             else -> result.notImplemented()
         }
     }

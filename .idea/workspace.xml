@@ -1,13 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c1de3749-6864-4ed9-9dcf-caff423c0382" name="Default Changelist" comment="" />
+    <list default="true" id="c1de3749-6864-4ed9-9dcf-caff423c0382" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/android/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/lib/hihealthkit-2.0.1.300.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/android/example.properties.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/huawei_health.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/huawei_health.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/huawei/hms/huawei_health/HuaweiHealthPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/huawei/hms/huawei_health/HuaweiHealthPlugin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/huawei/hms/huawei_health/scenes/HmsLoginScene.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/huawei/hms/huawei_health/scenes/HmsLoginScene.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/huawei_health.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/huawei_health.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1bTtoDtLTmjIRqlGoR9GVes68oD" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -20,6 +45,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="go.import.settings.migrated" value="true" />
+    <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -49,11 +75,38 @@
       <workItem from="1588724299013" duration="979000" />
       <workItem from="1588729680967" duration="164000" />
       <workItem from="1588734238568" duration="1246000" />
+      <workItem from="1588898355287" duration="33000" />
+      <workItem from="1588898400218" duration="642000" />
+      <workItem from="1588901129401" duration="20000" />
+      <workItem from="1588911153929" duration="2458000" />
+      <workItem from="1588921811118" duration="1292000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1874" height="284" key="GridCell.Tab.0.bottom" timestamp="1588914251474">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="284" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1588914251474" />
+    <state width="1874" height="284" key="GridCell.Tab.0.center" timestamp="1588914251474">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="284" key="GridCell.Tab.0.center/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1588914251474" />
+    <state width="1874" height="284" key="GridCell.Tab.0.left" timestamp="1588914251473">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="284" key="GridCell.Tab.0.left/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1588914251473" />
+    <state width="1874" height="284" key="GridCell.Tab.0.right" timestamp="1588914251474">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="284" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1588914251474" />
+    <state x="2579" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1588923424742">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2579" y="259" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1588923424742" />
   </component>
   <component name="WorkspaceManager">
     <option name="workspaces">
