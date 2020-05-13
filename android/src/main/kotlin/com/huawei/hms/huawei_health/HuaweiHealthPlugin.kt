@@ -2,7 +2,7 @@ package com.huawei.hms.huawei_health
 
 import android.app.Activity
 import androidx.annotation.NonNull
-import com.huawei.hms.huawei_health.scenes.HmsLoginScene
+import com.huawei.hms.huawei_health.scenes.HmsMethodHandler
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -14,7 +14,7 @@ import io.flutter.plugin.common.PluginRegistry.Registrar
 /** HuaweiHealthPlugin */
 class HuaweiHealthPlugin : FlutterPlugin, ActivityAware {
 
-    private var hmsLoginScene: HmsLoginScene? = null
+    private var hmsMethooHandler: HmsMethodHandler? = null
 
     private var methodChannel: MethodChannel? = null
 
@@ -27,10 +27,11 @@ class HuaweiHealthPlugin : FlutterPlugin, ActivityAware {
         @JvmStatic
         fun registerWith(registrar: Registrar) {
             val plugin = HuaweiHealthPlugin()
+            plugin.startListening(registrar.messenger())
             if (registrar.activeContext() is Activity) {
                 plugin.startListeningToActivity(
                         registrar.activity()
-                );
+                )
             }
         }
     }
@@ -57,27 +58,27 @@ class HuaweiHealthPlugin : FlutterPlugin, ActivityAware {
         methodChannel = MethodChannel(
                 messenger,
                 "huawei_health")
-        hmsLoginScene = HmsLoginScene()
-        methodChannel?.setMethodCallHandler(hmsLoginScene)
+        hmsMethooHandler = HmsMethodHandler()
+        methodChannel?.setMethodCallHandler(hmsMethooHandler)
     }
 
     private fun startListeningToActivity(
             activity: Activity
     ) {
-        if (hmsLoginScene != null) {
-            hmsLoginScene?.setActivity(activity)
+        if (hmsMethooHandler != null) {
+            hmsMethooHandler?.setActivity(activity)
         }
     }
 
     private fun stopListeningToActivity() {
-        if (hmsLoginScene != null) {
-            hmsLoginScene?.setActivity(null)
+        if (hmsMethooHandler != null) {
+            hmsMethooHandler?.setActivity(null)
         }
     }
 
     private fun stopListening() {
         methodChannel?.setMethodCallHandler(null)
         methodChannel = null
-        hmsLoginScene = null
+        hmsMethooHandler = null
     }
 }

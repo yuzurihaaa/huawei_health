@@ -25,7 +25,7 @@ private const val TAG = "HmsLoginScene"
 private const val ISO_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSSSS"
 private const val TIMEOUT = 0
 
-class HmsLoginScene: MethodChannel.MethodCallHandler {
+class HmsMethodHandler: MethodChannel.MethodCallHandler {
 
     private var activity: Activity? = null
 
