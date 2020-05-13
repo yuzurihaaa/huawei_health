@@ -6,12 +6,14 @@ A new Flutter project.
 
 1. Register yourself or your company at https://developer.huawei.com/.
 2. Register your app at Console > Smart Living > HiHealth Kit
+3. You may need to tweak [gradle](example/android/app/build.gradle) depends if you are using
+your own keystore. Keystore is ignored. 
 
 ## Getting Started
 
 **Running example**
 1. Create a copy of `example.properties` from [example.properties.bak](example/android/example.properties.bak)
-2. Replace your id and huawei id in [example.properties](example/android/example.properties)
+2. Replace your data in [example.properties](example/android/example.properties)
 3. Run the project.
 
 **Using in your own project**
@@ -32,4 +34,4 @@ import 'package:huawei_health/huawei_health.dart';
 
 ## Usage.
 
-// TODO: Add Example.
+

@@ -1,2 +1,6 @@
 application.id=YOUR REGISTERED ID
 huawei.id=YOUR HUAWEI ID
+key.password=YOUR KEY PASSWORD
+store.password=YOUR STORE PASSWORD
+key.alias=YOUR ALIAS NAME
+key.name=YOUR KEYSTORE NAME

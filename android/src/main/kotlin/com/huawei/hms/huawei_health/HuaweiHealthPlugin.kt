@@ -2,7 +2,9 @@ package com.huawei.hms.huawei_health
 
 import android.app.Activity
 import androidx.annotation.NonNull
-import com.huawei.hms.huawei_health.scenes.HmsLoginScene
+import com.huawei.hms.huawei_health.scenes.getDistance
+import com.huawei.hms.huawei_health.scenes.getSteps
+import com.huawei.hms.huawei_health.scenes.hmsLogin
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -34,13 +36,13 @@ class HuaweiHealthPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
         when (call.method) {
             "loginHuawei" -> {
-                val hmsLoginScene = HmsLoginScene(activity, result)
-                hmsLoginScene.hmsLogin()
+                hmsLogin(activity, result)
             }
             "getSteps" -> {
-
-                val hmsLoginScene = HmsLoginScene(activity, result)
-                hmsLoginScene.query()
+                getSteps(call, activity, result)
+            }
+            "getDistance" -> {
+                getDistance(call, activity, result)
             }
             else -> result.notImplemented()
         }
