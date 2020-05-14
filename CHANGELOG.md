@@ -1,3 +1,9 @@
+## 0.1.0
+
+* Fix package release. 
+
 ## 0.0.1
 
-* TODO: Describe initial release.
+* Authorize HiHealth.
+* Fetch Steps.
+* Fetch Distances.

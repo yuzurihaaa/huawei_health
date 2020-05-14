@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:huawei_health/huawei_health.dart';
+import 'package:hi_health/hi_health.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,6 +11,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   int distance = 0;
   int step = 0;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,7 +23,7 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             children: <Widget>[
               FlatButton(
-                onPressed: HuaweiHealth.authorizeHuawei,
+                onPressed: HiHealth.authorizeHuawei,
                 child: Text('Authorize User'),
               ),
               Text('Distance: $step'),
@@ -30,11 +31,11 @@ class _MyAppState extends State<MyApp> {
                 onPressed: () async {
                   final start = DateTime.now().subtract(Duration(days: 5));
                   final end = DateTime.now();
-                  final steps = await HuaweiHealth.getSteps(start, end);
-                  if (steps.isNotEmpty){
-                   setState(() {
-                    step = steps[0].data;
-                   });
+                  final steps = await HiHealth.getSteps(start, end);
+                  if (steps.isNotEmpty) {
+                    setState(() {
+                      step = steps[0].data;
+                    });
                   }
                 },
                 child: Text('Get Steps'),
@@ -44,7 +45,7 @@ class _MyAppState extends State<MyApp> {
                 onPressed: () async {
                   final start = DateTime.now().subtract(Duration(days: 5));
                   final end = DateTime.now();
-                  final distances = await HuaweiHealth.getDistance(start, end);
+                  final distances = await HiHealth.getDistance(start, end);
                   if (distances.isNotEmpty) {
                     setState(() {
                       distance = distances[0].data;

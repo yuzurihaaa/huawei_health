@@ -1,6 +1,10 @@
-# huawei_health
+# HiHealth 
 
-A new Flutter project.
+### [Disclaimer] This is not an official huawei hihealth plugins.
+* You must head to https://developer.huawei.com/consumer/en/ and create your account and app account.
+* This plugin is a wrapper for their `.jar` and android implementation.
+* Head to this [link](https://developer.huawei.com/consumer/en/doc/development/health-Library/31206) if you prefer to implement it yourself.
+* HiHealth is only available on Android. For iOS, use Apple Health.
 
 ## Prerequisite
 
@@ -25,13 +29,34 @@ your own keystore. Keystore is ignored.
 ```
 2. Add to `pubspec.yaml`
 
-> // TODO: Adding to pubspec.yaml example.
+```yaml
+huawei_health:
+    git:
+      url: git://github.com/zaralockheart/huawei_health
+```
+
 
 3. Import
 ```dart
-import 'package:huawei_health/huawei_health.dart';
+import 'package:hi_health/hi_health.dart';
 ```
 
 ## Usage.
+To get the Steps data:
+```dart
+Future getSteps() async {
+    final start = DateTime.now().subtract(Duration(days: 5));
+    final end = DateTime.now();
+    final steps = await HiHealth.getSteps(start, end);
+}
+```
 
+To get the distance data:
+```dart
+Future getDistances() async {
+    final start = DateTime.now().subtract(Duration(days: 5));
+    final end = DateTime.now();
+    final distances = await HiHealth.getDistance(start, end);
+}
+```
 

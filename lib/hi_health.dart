@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 class HuaweiException implements Exception {
@@ -18,7 +18,7 @@ class HuaweiDataClass {
   HuaweiDataClass({this.data, this.date});
 }
 
-class HuaweiHealth {
+class HiHealth {
   static const MethodChannel _channel = const MethodChannel('huawei_health');
 
   static Future authorizeHuawei() {

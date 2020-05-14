@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:huawei_health/huawei_health.dart';
+import 'package:hi_health/hi_health.dart';
 
 void main() {
   const MethodChannel channel = MethodChannel('huawei_health');
@@ -18,6 +18,6 @@ void main() {
   });
 
   test('getPlatformVersion', () async {
-    expect(await HuaweiHealth.authorizeHuawei, '42');
+    expect(await HiHealth.authorizeHuawei(), '42');
   });
 }
