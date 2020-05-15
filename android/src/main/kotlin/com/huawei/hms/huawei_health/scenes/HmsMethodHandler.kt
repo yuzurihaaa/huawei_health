@@ -12,20 +12,14 @@ import com.huawei.hihealthkit.data.store.HiHealthDataStore
 import com.huawei.hihealthkit.data.type.HiHealthPointType
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
-import kotlinx.coroutines.runBlocking
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.coroutines.resume
-import kotlin.coroutines.resumeWithException
-import kotlin.coroutines.suspendCoroutine
-
-class HiHealthException(val code: Int, message: String) : Exception(message)
 
 private const val TAG = "HmsLoginScene"
 private const val ISO_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSSSS"
 private const val TIMEOUT = 0
 
-class HmsMethodHandler: MethodChannel.MethodCallHandler {
+class HmsMethodHandler : MethodChannel.MethodCallHandler {
 
     private var activity: Activity? = null
 
@@ -68,65 +62,46 @@ class HmsMethodHandler: MethodChannel.MethodCallHandler {
         }
     }
 
+    @Suppress("UNCHECKED_CAST")
     private fun getSteps(call: MethodCall, result: MethodChannel.Result) {
         val (startTime, endTime) = getTime(call)
 
         val hiHealthDataQuery = HiHealthDataQuery(HiHealthPointType.DATA_POINT_STEP_SUM, startTime,
                 endTime, HiHealthDataQueryOption())
 
-        try {
-            runBlocking {
-                val data = queryHiHealth(hiHealthDataQuery)
-
+        HiHealthDataStore.execQuery(activity, hiHealthDataQuery, TIMEOUT) { resultCode, data ->
+            Log.i(TAG, "result code $resultCode")
+            if (data != null && data is ArrayList<*>) {
+                val output = setToMap(data = data as List<HiHealthPointData>)
                 activity?.runOnUiThread {
-                    result.success(data)
+                    result.success(output)
+                }
+            } else {
+                activity?.runOnUiThread {
+                    result.error(resultCode.toString(), "Data is null", null)
                 }
             }
-
-        } catch (e: HiHealthException) {
-            result.error(e.code.toString(), e.message, null)
         }
     }
 
+    @Suppress("UNCHECKED_CAST")
     private fun getDistance(call: MethodCall, result: MethodChannel.Result) {
         val (startTime, endTime) = getTime(call)
 
         val hiHealthDataQuery = HiHealthDataQuery(HiHealthPointType.DATA_POINT_DISTANCE_SUM, startTime,
                 endTime, HiHealthDataQueryOption())
 
-        try {
-            runBlocking {
-                val data = queryHiHealth(hiHealthDataQuery)
-
-                activity?.runOnUiThread {
-                    result.success(data)
-                }
-            }
-
-        } catch (e: HiHealthException) {
-            result.error(e.code.toString(), e.message, null)
-        }
-    }
-
-    @Suppress("UNCHECKED_CAST")
-    suspend fun queryHiHealth(query: HiHealthDataQuery) = suspendCoroutine<Map<String, Int>> { cont ->
-        HiHealthDataStore.execQuery(activity, query, TIMEOUT) { resultCode, data ->
+        HiHealthDataStore.execQuery(activity, hiHealthDataQuery, TIMEOUT) { resultCode, data ->
             Log.i(TAG, "result code $resultCode")
             if (data != null && data is ArrayList<*>) {
-                val dataMap = mutableMapOf<String, Int>()
-                val dataList: List<HiHealthPointData> = data as List<HiHealthPointData>
-                for (obj in dataList) {
-                    val calendar = Calendar.getInstance()
-                    calendar.timeInMillis = obj.startTime
-
-                    val dateFormat = SimpleDateFormat(ISO_FORMAT, Locale.US)
-                    dataMap[dateFormat.format(calendar.time)] = obj.value
-
+                val output = setToMap(data = data as List<HiHealthPointData>)
+                activity?.runOnUiThread {
+                    result.success(output)
                 }
-                Log.i(TAG, "result $dataMap")
-                cont.resume(dataMap.toMap())
             } else {
-                cont.resumeWithException(HiHealthException(resultCode, "Data is null"))
+                activity?.runOnUiThread {
+                    result.error(resultCode.toString(), "Data is null", null)
+                }
             }
         }
     }
@@ -141,5 +116,18 @@ class HmsMethodHandler: MethodChannel.MethodCallHandler {
         val startTimeInLong = SimpleDateFormat(ISO_FORMAT, Locale.US).parse(startTime)
 
         return Pair(startTimeInLong.time, endTimeInLong.time)
+    }
+
+    private fun setToMap(data: List<HiHealthPointData>): Map<String, Int> {
+        val dataMap = mutableMapOf<String, Int>()
+        val dataList: List<HiHealthPointData> = data
+        for (obj in dataList) {
+            val calendar = Calendar.getInstance()
+            calendar.timeInMillis = obj.startTime
+
+            val dateFormat = SimpleDateFormat(ISO_FORMAT, Locale.US)
+            dataMap[dateFormat.format(calendar.time)] = obj.value
+        }
+        return dataMap
     }
 }

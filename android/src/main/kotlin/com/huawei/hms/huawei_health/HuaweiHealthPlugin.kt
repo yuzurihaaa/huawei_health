@@ -14,7 +14,7 @@ import io.flutter.plugin.common.PluginRegistry.Registrar
 /** HuaweiHealthPlugin */
 class HuaweiHealthPlugin : FlutterPlugin, ActivityAware {
 
-    private var hmsMethooHandler: HmsMethodHandler? = null
+    private var hmsMethodHandler: HmsMethodHandler? = null
 
     private var methodChannel: MethodChannel? = null
 
@@ -58,27 +58,27 @@ class HuaweiHealthPlugin : FlutterPlugin, ActivityAware {
         methodChannel = MethodChannel(
                 messenger,
                 "huawei_health")
-        hmsMethooHandler = HmsMethodHandler()
-        methodChannel?.setMethodCallHandler(hmsMethooHandler)
+        hmsMethodHandler = HmsMethodHandler()
+        methodChannel?.setMethodCallHandler(hmsMethodHandler)
     }
 
     private fun startListeningToActivity(
             activity: Activity
     ) {
-        if (hmsMethooHandler != null) {
-            hmsMethooHandler?.setActivity(activity)
+        if (hmsMethodHandler != null) {
+            hmsMethodHandler?.setActivity(activity)
         }
     }
 
     private fun stopListeningToActivity() {
-        if (hmsMethooHandler != null) {
-            hmsMethooHandler?.setActivity(null)
+        if (hmsMethodHandler != null) {
+            hmsMethodHandler?.setActivity(null)
         }
     }
 
     private fun stopListening() {
         methodChannel?.setMethodCallHandler(null)
         methodChannel = null
-        hmsMethooHandler = null
+        hmsMethodHandler = null
     }
 }

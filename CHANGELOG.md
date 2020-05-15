@@ -1,3 +1,8 @@
+## 0.1.1
+
+* Fix UI hang when request.
+* Fix app crash  when user does not authorize.
+
 ## 0.1.0
 
 * Fix package release. 
