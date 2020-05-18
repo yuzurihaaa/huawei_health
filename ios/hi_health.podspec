@@ -3,7 +3,7 @@
 # Run `pod lib lint huawei_health.podspec' to validate before publishing.
 #
 Pod::Spec.new do |s|
-  s.name             = 'huawei_health'
+  s.name             = 'hi_health'
   s.version          = '0.0.1'
   s.summary          = 'A new Flutter project.'
   s.description      = <<-DESC

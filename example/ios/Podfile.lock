@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - hi_health (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - hi_health (from `.symlinks/plugins/hi_health/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  hi_health:
+    :path: ".symlinks/plugins/hi_health/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  hi_health: ae42fc2809f7c77e55b396eb7614cd8eb675c982
+
+PODFILE CHECKSUM: c34e2287a9ccaa606aeceab922830efb9a6ff69a
+
+COCOAPODS: 1.8.4
