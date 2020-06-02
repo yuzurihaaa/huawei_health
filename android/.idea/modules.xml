@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.huawei.hms.huawei_health-huawei_health.iml" filepath="$PROJECT_DIR$/.idea/modules/com.huawei.hms.huawei_health-huawei_health.iml" group="huawei_health" />
       <module fileurl="file://$PROJECT_DIR$/huawei_health.iml" filepath="$PROJECT_DIR$/huawei_health.iml" group="huawei_health" />
     </modules>
   </component>

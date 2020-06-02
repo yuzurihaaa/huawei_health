@@ -1,3 +1,9 @@
+# 0.1.3
+* Fix authorizing (fail but return success)
+
+# 0.1.2
+* Fix authorization (success but actually fail)
+
 ## 0.1.1
 
 * Fix UI hang when request.

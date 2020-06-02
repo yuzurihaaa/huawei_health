@@ -53,7 +53,7 @@ class HmsMethodHandler : MethodChannel.MethodCallHandler {
             Log.i(TAG, "requestAuthorization onResult: $reason")
             activity?.runOnUiThread {
                 if (code != 0) {
-                    result.success("Opening authorization screen")
+                    result.error("$code","Fail to authorize user", "$reason")
                 } else {
                     result.success("Opening authorization screen")
                 }
