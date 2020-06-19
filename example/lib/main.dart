@@ -26,11 +26,11 @@ class _MyAppState extends State<MyApp> {
                 onPressed: HiHealth.authorizeHuawei,
                 child: Text('Authorize User'),
               ),
-              Text('Distance: $step'),
+              Text('Step: $step'),
               FlatButton(
                 onPressed: () async {
                   final start = DateTime.now().subtract(Duration(days: 5));
-                  final end = DateTime.now();
+                  final end = DateTime.now().add(Duration(days:1));
                   final steps = await HiHealth.getSteps(start, end);
                   if (steps.isNotEmpty) {
                     setState(() {

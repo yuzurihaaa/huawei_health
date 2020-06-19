@@ -30,9 +30,7 @@ your own keystore. Keystore is ignored.
 2. Add to `pubspec.yaml`
 
 ```yaml
-huawei_health:
-    git:
-      url: git://github.com/zaralockheart/huawei_health
+huawei_health: any 
 ```
 
 
@@ -60,3 +58,10 @@ Future getDistances() async {
 }
 ```
 
+## Release
+If you enable minify, add this line into your proguard rules. This will avoid exception when unmarshalling class.
+```proguard
+-keep class com.huawei.hihealth.* {
+   public *;
+}
+```
